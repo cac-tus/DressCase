@@ -1,3 +1,3 @@
 class OfferLog < ActiveRecord::Base
-  attr_accessible :id, :message, :receive_datetime, :receive_id, :send_datetime, :send_id
+  attr_accessible :actress_id, :director_id, :message, :offer_id, :receive_datetime, :send_datetime
 end
