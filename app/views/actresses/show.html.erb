@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Id:</b>
+  <%= @actress.id %>
+</p>
+
+<p>
+  <b>Office:</b>
+  <%= @actress.office_id %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @actress.name %>
+</p>
+
+<p>
+  <b>Sex:</b>
+  <%= @actress.sex %>
+</p>
+
+<p>
+  <b>Birthday:</b>
+  <%= @actress.birthday %>
+</p>
+
+<p>
+  <b>Profile:</b>
+  <%= @actress.profile %>
+</p>
+
+
+<%= link_to 'Edit', edit_actress_path(@actress) %> |
+<%= link_to 'Back', actresses_path %>

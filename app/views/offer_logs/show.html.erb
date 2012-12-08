@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Offer:</b>
+  <%= @offer_log.offer_id %>
+</p>
+
+<p>
+  <b>Director:</b>
+  <%= @offer_log.director_id %>
+</p>
+
+<p>
+  <b>Actress:</b>
+  <%= @offer_log.actress_id %>
+</p>
+
+<p>
+  <b>Send datetime:</b>
+  <%= @offer_log.send_datetime %>
+</p>
+
+<p>
+  <b>Receive datetime:</b>
+  <%= @offer_log.receive_datetime %>
+</p>
+
+<p>
+  <b>Message:</b>
+  <%= @offer_log.message %>
+</p>
+
+
+<%= link_to 'Edit', edit_offer_log_path(@offer_log) %> |
+<%= link_to 'Back', offer_logs_path %>

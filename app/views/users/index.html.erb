@@ -1,0 +1,35 @@
+<h1>Listing users</h1>
+
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Mail</th>
+    <th>Name</th>
+    <th>Password</th>
+    <th>Type</th>
+    <th>Last login</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+<% if false %>
+<% @users.each do |user| %>
+  <tr>
+    <td><%= user.id %></td>
+    <td><%= user.mail %></td>
+    <td><%= user.name %></td>
+    <td><%= user.password %></td>
+    <td><%= user.type %></td>
+    <td><%= user.last_login %></td>
+    <td><%= link_to 'Show', user %></td>
+    <td><%= link_to 'Edit', edit_user_path(user) %></td>
+    <td><%= link_to 'Destroy', user, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+<% end %>
+<br />
+
+<% if false %>
+<%= link_to 'New User', new_user_path %>
+<% end %>
