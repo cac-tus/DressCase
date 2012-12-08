@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  id: 1
+  send_id: 1
+  receive_id: 1
+  send_datetime: 2012-10-26 20:37:21
+  receive_datetime: 2012-10-26 20:37:21
+  message: MyText
+
+two:
+  id: 1
+  send_id: 1
+  receive_id: 1
+  send_datetime: 2012-10-26 20:37:21
+  receive_datetime: 2012-10-26 20:37:21
+  message: MyText
