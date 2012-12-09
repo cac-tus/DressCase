@@ -10,7 +10,7 @@ class CreateOffices < ActiveRecord::Migration
       t.string :mail2
       t.text :caption
       t.binary :logo
-      t.string :last_login
+      t.datetime :last_login
 
       t.timestamps
     end

@@ -1,0 +1,33 @@
+<h1>Listing offer_logs</h1>
+
+<table>
+  <tr>
+    <th>Offer</th>
+    <th>Director</th>
+    <th>Actress</th>
+    <th>Send datetime</th>
+    <th>Receive datetime</th>
+    <th>Message</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @offer_logs.each do |offer_log| %>
+  <tr>
+    <td><%= offer_log.offer_id %></td>
+    <td><%= offer_log.director_id %></td>
+    <td><%= offer_log.actress_id %></td>
+    <td><%= offer_log.send_datetime %></td>
+    <td><%= offer_log.receive_datetime %></td>
+    <td><%= offer_log.message %></td>
+    <td><%= link_to 'Show', offer_log %></td>
+    <td><%= link_to 'Edit', edit_offer_log_path(offer_log) %></td>
+    <td><%= link_to 'Destroy', offer_log, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Offer log', new_offer_log_path %>

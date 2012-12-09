@@ -1,0 +1,53 @@
+<%= form_for(@actress) do |f| %>
+  <% if @actress.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@actress.errors.count, "error") %> prohibited this actress from being saved:</h2>
+
+      <ul>
+      <% @actress.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :id %><br />
+    <%= f.number_field :id %>
+  </div>
+  <div class="field">
+    <%= f.label :office_id %><br />
+    <%= f.number_field :office_id %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :sex %><br />
+    <%= f.number_field :sex %>
+  </div>
+  <div class="field">
+    <%= f.label :birthday %><br />
+    <%= f.date_select :birthday %>
+  </div>
+  <div class="field">
+    <%= f.label :photo1 %><br />
+    <%= f.text_field :photo1 %>
+  </div>
+  <div class="field">
+    <%= f.label :photo2 %><br />
+    <%= f.text_field :photo2 %>
+  </div>
+  <div class="field">
+    <%= f.label :photo3 %><br />
+    <%= f.text_field :photo3 %>
+  </div>
+  <div class="field">
+    <%= f.label :profile %><br />
+    <%= f.text_area :profile %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

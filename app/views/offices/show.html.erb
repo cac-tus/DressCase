@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Id:</b>
+  <%= @office.id %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @office.user_id %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%= @office.address %>
+</p>
+
+<p>
+  <b>Rep name:</b>
+  <%= @office.rep_name %>
+</p>
+
+<p>
+  <b>Tel:</b>
+  <%= @office.tel %>
+</p>
+
+<p>
+  <b>Tel2:</b>
+  <%= @office.tel2 %>
+</p>
+
+<p>
+  <b>Mail2:</b>
+  <%= @office.mail2 %>
+</p>
+
+<p>
+  <b>Caption:</b>
+  <%= @office.caption %>
+</p>
+
+<p>
+  <b>Logo:</b>
+  <%= @office.logo %>
+</p>
+
+<p>
+  <b>Last login:</b>
+  <%= @office.last_login %>
+</p>
+
+
+<%= link_to 'Edit', edit_office_path(@office) %> |
+<%= link_to 'Back', offices_path %>
