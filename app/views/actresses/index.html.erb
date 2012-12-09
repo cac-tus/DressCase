@@ -1,0 +1,41 @@
+<h1>Listing actresses</h1>
+
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Office</th>
+    <th>Name</th>
+    <th>Sex</th>
+    <th>Birthday</th>
+    <th>Photo1</th>
+    <th>Photo2</th>
+    <th>Photo3</th>
+    <th>Profile</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @actresses.each do |actress| %>
+  <tr>
+    <td><%= actress.id %></td>
+    <td><%= actress.office_id %></td>
+    <td><%= actress.name %></td>
+    <td><%= actress.sex %></td>
+    <td><%= actress.birthday %></td>
+    <% if false %>
+    <td><%= actress.photo1 %></td>
+    <td><%= actress.photo2 %></td>
+    <td><%= actress.photo3 %></td>
+    <% end %>
+    <td><%= actress.profile %></td>
+    <td><%= link_to 'Show', actress %></td>
+    <td><%= link_to 'Edit', edit_actress_path(actress) %></td>
+    <td><%= link_to 'Destroy', actress, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Actress', new_actress_path %>

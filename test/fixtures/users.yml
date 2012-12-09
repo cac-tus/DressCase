@@ -6,9 +6,7 @@ one:
   name: MyString
   password: MyString
   type: 1
-  sign_up: 2012-10-26 17:42:27
-  last_login: 2012-10-26 17:42:27
-  last_update: 2012-10-26 17:42:27
+  last_login: 2012-10-30 20:12:02
 
 two:
   id: 1
@@ -16,6 +14,4 @@ two:
   name: MyString
   password: MyString
   type: 1
-  sign_up: 2012-10-26 17:42:27
-  last_login: 2012-10-26 17:42:27
-  last_update: 2012-10-26 17:42:27
+  last_login: 2012-10-30 20:12:02

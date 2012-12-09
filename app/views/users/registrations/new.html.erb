@@ -1,0 +1,17 @@
+<h1>New user</h1>
+
+<%= form_for(@user, :as => 'user', :url => registration_path('user')) do |f| %>
+メール
+<%= f.text_field :email %>
+<br>
+名前
+<%= f.text_field :name %>
+<br>
+password
+<%= f.text_field :password %>
+<br>
+
+<%= f.submit '登録する' %>
+<% end %>
+
+<%= link_to 'Back', root_path %>

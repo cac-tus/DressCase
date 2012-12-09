@@ -8,6 +8,20 @@
 </head>
 <body>
 
+
+<% if user_signed_in? %>
+  Sign in as <strong><%= current_user.name  %></strong> | <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+<% else %>
+
+	<%= link_to "登録する", 
+		{ :controller => 'users/registrations', :action => 'new' },
+		{ :id => '', :class => '' } %>
+	<br />
+	<%= link_to "Facebookで登録する", user_omniauth_authorize_path(:facebook) %>
+
+<% end %>
+
+
 <%= yield %>
 
 </body>

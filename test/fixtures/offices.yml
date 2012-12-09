@@ -10,7 +10,7 @@ one:
   mail2: MyString
   caption: MyText
   logo: 
-  last_login: MyString
+  last_login: 2012-10-30 22:30:27
 
 two:
   id: 1
@@ -22,4 +22,4 @@ two:
   mail2: MyString
   caption: MyText
   logo: 
-  last_login: MyString
+  last_login: 2012-10-30 22:30:27

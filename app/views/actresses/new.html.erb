@@ -1,0 +1,39 @@
+<h1>New actress</h1>
+<% if current_user %>
+name : <%= current_user.name %>
+<% end %>
+<br>
+<%= form_for(@actress, :html => { :multipart => true }) do |f| %>
+
+<% if current_user %>
+<%= f.hidden_field :id , { :value => current_user.id }%>
+<% end %>
+
+名前
+<%= f.text_field :name, { :value => current_user.name }  %>
+<br>
+性別
+男:
+<%= f.radio_button :sex , 'male' %>
+女: 
+<%= f.radio_button :sex , 'female' %>
+<br>
+生年月日
+<%= f.text_field :birthday %>
+<br>
+写真1
+<%= f.file_field :photo1 %>
+<br>
+写真2
+<%= f.file_field :photo2 %>
+<br>
+写真3
+<%= f.file_field :photo3 %>
+<br>
+プロフィール
+<%= f.text_area :profile %>
+<br>
+<%= f.submit '登録する' %>
+<% end %>
+
+<%= link_to 'Back', actresses_path %>

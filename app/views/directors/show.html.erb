@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Id:</b>
+  <%= @director.id %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @director.user_id %>
+</p>
+
+<p>
+  <b>Photo:</b>
+  <%= @director.photo %>
+</p>
+
+<p>
+  <b>Sex:</b>
+  <%= @director.sex %>
+</p>
+
+<p>
+  <b>Birthday:</b>
+  <%= @director.birthday %>
+</p>
+
+<p>
+  <b>Profile:</b>
+  <%= @director.profile %>
+</p>
+
+<p>
+  <b>Belong:</b>
+  <%= @director.belong %>
+</p>
+
+<p>
+  <b>Last login:</b>
+  <%= @director.last_login %>
+</p>
+
+
+<%= link_to 'Edit', edit_director_path(@director) %> |
+<%= link_to 'Back', directors_path %>
