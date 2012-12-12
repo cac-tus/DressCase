@@ -44,7 +44,32 @@ class ActressesController < ApplicationController
   def create
 
     @actress = Actress.new( params[:actress] ) 
-    @actress.photo1 = @actress.photo1.read
+
+      if @actress.photo1 != nil 
+        File::open("actressImage/#{@actress.id.to_s}_photo1.jpg", 'wb') do |of|
+          of.write( @actress.photo1.read )
+          of.close
+        end
+      end
+      if @actress.photo2 != nil 
+        File::open("actressImage/#{@actress.id.to_s}_photo2.jpg", 'wb') do |of|
+          of.write( @actress.photo2.read )
+          of.close
+        end
+      end
+      if @actress.photo3 != nil 
+        File::open("actressImage/#{@actress.id.to_s}_photo3.jpg", 'wb') do |of|
+          of.write( @actress.photo3.read )
+          of.close
+        end
+      end
+      
+    #ここらへんでphoto1に文字列代入しとかないと
+    #意味不明なエラーがでる！イライラするぞ！
+      @actress.photo1 = "#{@actress.id.to_s}_photo1.jpg" 
+      @actress.photo2 = "#{@actress.id.to_s}_photo2.jpg" 
+      @actress.photo3 = "#{@actress.id.to_s}_photo3.jpg" 
+
     respond_to do |format|
       if @actress.save
         format.html { redirect_to @actress, :notice => 'Actress was successfully created.' }
