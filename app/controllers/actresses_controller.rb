@@ -44,8 +44,38 @@ class ActressesController < ApplicationController
   def create
 
     @actress = Actress.new( params[:actress] ) 
-    @actress.photo1 = @actress.photo1.read
-    respond_to do |format|
+
+      def file_save_validate 
+        @actress.photo1 = yield(@actress.photo1)
+        @actress.photo2 = yield(@actress.photo2)
+        @actress.photo3 = yield(@actress.photo3)
+      end
+      file_save_validate do |photo|
+        if photo != nil
+          if photo.content_type =~ /image\/jpeg/ || photo.content_type =~ /image\/jpg/
+            File::open("actressImage/#{@actress.id.to_s}_#{photo.to_s}.jpg", 'wb') do |of|
+            of.write( photo.read )
+            of.close
+            end
+            #以下の方法での名前のつけかただとなんか絶対あとでバグでる
+            file_name = photo.headers.slice(
+               photo.headers.index("[") + 1 .. 
+               photo.headers.index("]") - 1 
+            )
+            next "#{@actress.id.to_s}_#{file_name}.jpg"
+          else
+            #jpeg以外がきたときどうする?
+            #暫定的に "none" という文字列をかえす。意味わからんけど。
+            #TODO:処理ちゃんときめる
+            next "none" 
+          end
+        end
+        next 
+      end
+
+      # NOTE:save時にDB上でエラーおこすとRollBackしてエラーが判別
+      # しにくいのでlog とか コンソールの出力をよくみよう。
+    respond_to do |format| 
       if @actress.save
         format.html { redirect_to @actress, :notice => 'Actress was successfully created.' }
           format.json { render :json => @actress, :status => :created, :location => @actress }
