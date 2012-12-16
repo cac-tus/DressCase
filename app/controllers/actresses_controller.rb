@@ -45,32 +45,37 @@ class ActressesController < ApplicationController
 
     @actress = Actress.new( params[:actress] ) 
 
-      if @actress.photo1 != nil 
-        File::open("actressImage/#{@actress.id.to_s}_photo1.jpg", 'wb') do |of|
-          of.write( @actress.photo1.read )
-          of.close
-        end
+      def file_save_validate 
+        @actress.photo1 = yield(@actress.photo1)
+        @actress.photo2 = yield(@actress.photo2)
+        @actress.photo3 = yield(@actress.photo3)
       end
-      if @actress.photo2 != nil 
-        File::open("actressImage/#{@actress.id.to_s}_photo2.jpg", 'wb') do |of|
-          of.write( @actress.photo2.read )
-          of.close
+      file_save_validate do |photo|
+        if photo != nil
+          if photo.content_type =~ /image\/jpeg/ || photo.content_type =~ /image\/jpg/
+            File::open("actressImage/#{@actress.id.to_s}_#{photo.to_s}.jpg", 'wb') do |of|
+            of.write( photo.read )
+            of.close
+            end
+            #以下の方法での名前のつけかただとなんか絶対あとでバグでる
+            file_name = photo.headers.slice(
+               photo.headers.index("[") + 1 .. 
+               photo.headers.index("]") - 1 
+            )
+            next "#{@actress.id.to_s}_#{file_name}.jpg"
+          else
+            #jpeg以外がきたときどうする?
+            #暫定的に "none" という文字列をかえす。意味わからんけど。
+            #TODO:処理ちゃんときめる
+            next "none" 
+          end
         end
+        next 
       end
-      if @actress.photo3 != nil 
-        File::open("actressImage/#{@actress.id.to_s}_photo3.jpg", 'wb') do |of|
-          of.write( @actress.photo3.read )
-          of.close
-        end
-      end
-      
-    #ここらへんでphoto1に文字列代入しとかないと
-    #意味不明なエラーがでる！イライラするぞ！
-      @actress.photo1 = "#{@actress.id.to_s}_photo1.jpg" 
-      @actress.photo2 = "#{@actress.id.to_s}_photo2.jpg" 
-      @actress.photo3 = "#{@actress.id.to_s}_photo3.jpg" 
 
-    respond_to do |format|
+      # NOTE:save時にDB上でエラーおこすとRollBackしてエラーが判別
+      # しにくいのでlog とか コンソールの出力をよくみよう。
+    respond_to do |format| 
       if @actress.save
         format.html { redirect_to @actress, :notice => 'Actress was successfully created.' }
           format.json { render :json => @actress, :status => :created, :location => @actress }
