@@ -1,10 +1,5 @@
-#encoding: utf-8
-
-dummy = "ダミー"
-
 class ActressesController < ApplicationController
-  # GET /actresses #ほ
-
+  # GET /actresses
   # GET /actresses.json
   def index
     @actresses = Actress.all
