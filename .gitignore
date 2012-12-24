@@ -11,10 +11,11 @@
 /db/*.sqlite3
 
 # Ignore all logfiles and tempfiles.
-/log/*.log
-/tmp
+log/*.log
+tmp/*
 
 .DS_Store 
 
 .ignore
 
+app/assets/images/*

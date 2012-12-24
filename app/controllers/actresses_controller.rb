@@ -1,5 +1,10 @@
+#encoding: utf-8
+
+dummy = "ダミー"
+
 class ActressesController < ApplicationController
-  # GET /actresses
+  # GET /actresses #ほ
+
   # GET /actresses.json
   def index
     @actresses = Actress.all
@@ -52,29 +57,31 @@ class ActressesController < ApplicationController
       end
       file_save_validate do |photo|
         if photo != nil
+          #以下の方法での名前のつけかただとなんか絶対あとでバグでる
+          file_name = photo.headers.slice(
+             photo.headers.index("[") + 1 .. 
+             photo.headers.index("]") - 1 
+          )
           if photo.content_type =~ /image\/jpeg/ || photo.content_type =~ /image\/jpg/
-            File::open("actressImage/#{@actress.id.to_s}_#{photo.to_s}.jpg", 'wb') do |of|
-            of.write( photo.read )
-            of.close
+            File::open("app/assets/images/actressImage/#{@actress.id.to_s}_#{file_name}.jpg", 'wb') do |of|
+              of.write( photo.read )
+              of.close
             end
-            #以下の方法での名前のつけかただとなんか絶対あとでバグでる
-            file_name = photo.headers.slice(
-               photo.headers.index("[") + 1 .. 
-               photo.headers.index("]") - 1 
-            )
-            next "#{@actress.id.to_s}_#{file_name}.jpg"
-          else
+          next "#{@actress.id.to_s}_#{file_name}.jpg"
+        else
             #jpeg以外がきたときどうする?
             #暫定的に "none" という文字列をかえす。意味わからんけど。
             #TODO:処理ちゃんときめる
             next "none" 
           end
         end
-        next 
+      next 
       end
 
       # NOTE:save時にDB上でエラーおこすとRollBackしてエラーが判別
       # しにくいのでlog とか コンソールの出力をよくみよう。
+    #TODO:DBに全部 ? で登録されてたから試しにつけてみた
+    @actress.profile = @actress.profile.to_s.force_encoding("utf-8")
     respond_to do |format| 
       if @actress.save
         format.html { redirect_to @actress, :notice => 'Actress was successfully created.' }

@@ -23,11 +23,11 @@
     <td><%= actress.name %></td>
     <td><%= actress.sex %></td>
     <td><%= actress.birthday %></td>
-    <% if false %>
-    <td><%= actress.photo1 %></td>
-    <td><%= actress.photo2 %></td>
-    <td><%= actress.photo3 %></td>
-    <% end %>
+
+    <td><%= image_tag(asset_path "/assets/actressImage/" + actress.photo1.to_s.force_encoding("utf-8"), :alt => "no_photo" ) %></td>
+    <td><%= image_tag(asset_path "/assets/actressImage/" + actress.photo2.to_s.force_encoding("utf-8"), :alt => "no_photo" ) %></td>
+    <td><%= image_tag(asset_path "/assets/actressImage/" + actress.photo3.to_s.force_encoding("utf-8"), :alt => "no_photo" ) %></td>
+
     <td><%= actress.profile %></td>
     <td><%= link_to 'Show', actress %></td>
     <td><%= link_to 'Edit', edit_actress_path(actress) %></td>
