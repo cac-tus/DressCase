@@ -1,41 +1,59 @@
-<h1>Listing actresses</h1>
+<div id="time_line">
+    <div class="time_line_bar">
+        <p id="time_line_text">time line</p>
+    </div>
 
-<table>
-  <tr>
-    <th>Id</th>
-    <th>Office</th>
-    <th>Name</th>
-    <th>Sex</th>
-    <th>Birthday</th>
-    <th>Photo1</th>
-    <th>Photo2</th>
-    <th>Photo3</th>
-    <th>Profile</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+    <div id="time_line_test_text">
+        <p id="demo">雨ニモマケズ風ニモマケズ雪ニモ夏ノ暑サニモマケヌ丈夫ナカラダヲモチ慾ハナク決シテ瞋ラズイツモシヅカニワラッテヰル一日ニ玄米四合ト味噌ト少シノ野菜ヲタベ</p>
+        <p id="demo">雨ニモマケズ風ニモマケズ雪ニモ夏ノ暑サニモマケヌ丈夫ナカラダヲモチ慾ハナク決シテ瞋ラズイツモシヅカニワラッテヰル一日ニ玄米四合ト味噌ト少シノ野菜ヲタベ</p>
+        <p id="demo">雨ニモマケズ風ニモマケズ雪ニモ夏ノ暑サニモマケヌ丈夫ナカラダヲモチ慾ハナク決シテ瞋ラズイツモシヅカニワラッテヰル一日ニ玄米四合ト味噌ト少シノ野菜ヲタベ</p>
+        <p id="demo">雨ニモマケズ風ニモマケズ雪ニモ夏ノ暑サニモマケヌ丈夫ナカラダヲモチ慾ハナク決シテ瞋ラズイツモシヅカニワラッテヰル一日ニ玄米四合ト味噌ト少シノ野菜ヲタベ</p>
+        <p id="demo">雨ニモマケズ風ニモマケズ雪ニモ夏ノ暑サニモマケヌ丈夫ナカラダヲモチ慾ハナク決シテ瞋ラズイツモシヅカニワラッテヰル一日ニ玄米四合ト味噌ト少シノ野菜ヲタベ</p>
+        <p id="demo">雨ニモマケズ風ニモマケズ雪ニモ夏ノ暑サニモマケヌ丈夫ナカラダヲモチ慾ハナク決シテ瞋ラズイツモシヅカニワラッテヰル一日ニ玄米四合ト味噌ト少シノ野菜ヲタベ</p>
+    </div>
+</div>
 
-<% @actresses.each do |actress| %>
-  <tr>
-    <td><%= actress.id %></td>
-    <td><%= actress.office_id %></td>
-    <td><%= actress.name %></td>
-    <td><%= actress.sex %></td>
-    <td><%= actress.birthday %></td>
+<div id="main_contents">
+    <a href="">
+        <%= image_tag "tri_l.png" ,:height=>200 ,:width=>31 ,:alt=>"矢印" ,:class=>"triangle_left"  %>
+    </a>
 
-    <td><%= image_tag(asset_path "/assets/actressImage/" + actress.photo1.to_s.force_encoding("utf-8"), :alt => "no_photo" ) %></td>
-    <td><%= image_tag(asset_path "/assets/actressImage/" + actress.photo2.to_s.force_encoding("utf-8"), :alt => "no_photo" ) %></td>
-    <td><%= image_tag(asset_path "/assets/actressImage/" + actress.photo3.to_s.force_encoding("utf-8"), :alt => "no_photo" ) %></td>
+    <ul class="menu_ul">
+        <a href=""><li class="menu_li">actress</li></a>
+        <a href=""><li class="menu_li">actor</li></a>
+        <a href=""><li class="menu_li">director</li></a>
+    </ul>
 
-    <td><%= actress.profile %></td>
-    <td><%= link_to 'Show', actress %></td>
-    <td><%= link_to 'Edit', edit_actress_path(actress) %></td>
-    <td><%= link_to 'Destroy', actress, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+    <div id="photo_wrapper">
+        <div id="photo">
+            <tr>
+                <% @actresses.each do |actress| %>
+                <td><%= image_tag ( asset_path "/assets/actressImage/" + actress.photo1.to_s.force_encoding("utf-8") ), :class => "photo_contents", :width => "200", :height => "400"  %></td>
+                <% end %>
+            </tr>
+        </div>
+    </div>
 
-<br />
+    <a href="">
+        <%= image_tag "tri_r.png" ,:height=>200 ,:width=>31 ,:alt=>"矢印" ,:class=>"triangle_right"  %>
+    </a>
+</div>
 
+<div id="sub_contents">
+
+    <div id="photo_reverse">
+        <% @actresses.each do |actress| %>
+            <%= image_tag ( asset_path "/assets/actressImage/" + actress.photo1.to_s.force_encoding("utf-8") ), :class => "photo_contents", :width => "200", :height => "270"  %>
+        <% end %>
+    </div>
+
+    <div id="sub_contents_back">
+        <div id="photo_small">
+            <% @actresses.each do |actress| %>
+                <%= image_tag ( asset_path "/assets/actressImage/" + actress.photo1.to_s.force_encoding("utf-8") ), :class => "photo_contents_small", :width => "50", :height => "100"  %>
+            <% end %>
+        </div>
+    </div>
+</div>
+<footer class="clearfix"></footer>
 <%= link_to 'New Actress', new_actress_path %>
