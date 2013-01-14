@@ -15,7 +15,7 @@
 
 <div id="main_contents">
     <a href="">
-        <%= image_tag "tri_l.png" ,:height=>200 ,:width=>31 ,:alt=>"矢印" ,:class=>"triangle_left"  %>
+        <%= image_tag "side_l.png" ,:height=>450 ,:width=>100 ,:alt=>"矢印" ,:class=>"side_l"  %>
     </a>
 
     <ul class="menu_ul">
@@ -35,16 +35,17 @@
     </div>
 
     <a href="">
-        <%= image_tag "tri_r.png" ,:height=>200 ,:width=>31 ,:alt=>"矢印" ,:class=>"triangle_right"  %>
+        <%= image_tag "side_r.png" ,:height=>450 ,:width=>100 ,:alt=>"矢印" ,:class=>"side_r"  %>
     </a>
 </div>
 
 <div id="sub_contents">
-
-    <div id="photo_reverse">
-        <% @actresses.each do |actress| %>
-            <%= image_tag ( asset_path "/assets/actressImage/" + actress.photo1.to_s.force_encoding("utf-8") ), :class => "photo_contents", :width => "200", :height => "270"  %>
-        <% end %>
+    <div id="photo_reverse_wrapper">
+        <div id="photo_reverse">
+            <% @actresses.each do |actress| %>
+                <%= image_tag ( asset_path "/assets/actressImage/" + actress.photo1.to_s.force_encoding("utf-8") ), :class => "photo_contents", :width => "200", :height => "270"  %>
+            <% end %>
+        </div>
     </div>
 
     <div id="sub_contents_back">

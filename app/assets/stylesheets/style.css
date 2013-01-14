@@ -15,14 +15,11 @@ a:hover{
 	color: #505050;
 }*/
 
-
-
-
 header{
 	width: 100%;
 	height: 80px;
-	background-color: #f2f2f2;/*
-	border-bottom: 3px solid #e0e0e0;*/
+	background-color: #f2f2f2;
+	/*border-bottom: 3px solid #e0e0e0;*/
 	background-image: url("/assets/header_back.png");
 }
 
@@ -121,18 +118,18 @@ div#main_contents{
 }
 
 
-img.triangle_left{
-	margin: 120px 0 0 0;
+img.side_l{
+	margin: 0;
 	float: left;
-	position: absolute; left: 10px;
+	position: absolute; left: 0;
 	z-index: 101;
 }
 
 
-img.triangle_right{
-	margin: 120px 0 0 0;
+img.side_r{
+	margin: 0;
 	float: right;
-	position: absolute; right: 10px;
+	position: absolute; right: 0;
 	z-index: 101;
 }
 
@@ -149,8 +146,7 @@ div#photo_wrapper{
 	position: absolute; top: 50px;
 	height: 400px;
 	width: 100%;
-	overflow-x: scroll;
-	overflow-y: hidden;
+	overflow: hidden;
 }
 
 .photo_contents{
@@ -165,16 +161,24 @@ div#photo_wrapper{
 div#sub_contents{
 	position: relative;
 	margin-left: 200px;
-	width: auto;
 	height: 177px;
 	background-color: #ffffff;
 }
 
 
+div#photo_reverse_wrapper{
+	position: absolute;
+	width: 100%;
+	overflow: hidden;
+
+}	
+
 div#photo_reverse{
+	position: relative; 
+		top:-7px;
 	margin: 0 0 0 60px;
 	float: left;
-	position: absolute; bottom: -93px;
+	width:2000px;
 	-webkit-transform: scaleY(-1);/*以下画像反転のため*/
 	-moz-transform: scaleY(-1);
 	-o-transform: scaleY(-1);
@@ -185,7 +189,7 @@ div#photo_reverse{
 
 
 div#sub_contents_back{
-	position: relative;left:;
+	position: relative;
 	width: 100%;
 	height: 176px;
 	background-image: url("/assets/sub_back.png");	/*勝手に繰り返し*/
@@ -211,15 +215,6 @@ footer{
 	background-color: #f2f2f2;
 	position: relative; top: 3px;
 }
-
-
-
-
-
-
-
-
-
 
 
 
