@@ -1,26 +1,47 @@
 <!DOCTYPE html>
 <html>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content="cactus">
+<meta name="copyright" content="">
+<meta name="robots" content="NOINDEX,FOLLOW">
 <head>
-  <title>Actressbook</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+	<title>DressCase</title>
+	<script src="http://code.jquery.com/jqueryry-latest.min.js"></script> 
+	<%= javascript_include_tag "application" %>
+	<%= stylesheet_link_tag    "style", :media => "all" %>
+	<%= javascript_include_tag "jquery.mousewheel" %>
+	<%= javascript_include_tag "scroll" %>
+	<%= csrf_meta_tags %>
+<title>dresscase</title>
 </head>
 <body>
 
+<header>
+	<a href="index.html">
+		<%= image_tag "logo.png" , :height => 60, :width => 300, :alt => "dresscase_logo" , :id=>"logo"%>
+	</a>
 
-<% if user_signed_in? %>
-  Sign in as <strong><%= current_user.name  %></strong> | <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-<% else %>
+	
+	<%= image_tag "serch.png"	,:height=>24, :width=>200, :alt=>"serch_box", :id=>"serch" %>
 
-	<%= link_to "登録する", 
-		{ :controller => 'users/registrations', :action => 'new' },
-		{ :id => '', :class => '' } %>
-	<br />
-	<%= link_to "Facebookで登録する", user_omniauth_authorize_path(:facebook) %>
-
-<% end %>
-
+	<% if user_signed_in? %>
+		<div class="auth">
+			Sign in as <strong><%= current_user.name  %></strong> | <%= link_to "Sign out", destroy_user_session_path, :method => :delete  %>
+		</div>
+	<% else %>
+		<div class="auth">
+			<%= link_to(user_session) do %>
+				<span id="sign_up">Sign up</span>
+			<% end %>
+			<%= link_to(user_session) do %>
+				<span id="log_in">log in</span>
+			<% end %>
+		</div>
+			<%= link_to "Facebookで登録する", user_omniauth_authorize_path(:facebook) %>
+	<% end %>
+</header>
 
 <%= yield %>
 
